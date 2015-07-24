@@ -1,12 +1,14 @@
 require 'csv'
+# require_relative '../../app/models/person'
 
 class SunlightLegislatorsImporter
   def self.import(filename)
     csv = CSV.new(File.open(filename), :headers => true)
     csv.each do |row|
-      row.each do |field, value|
+      # row.each do |field, value|
+        Legislator.create(row.to_hash)
         # TODO: begin
-        raise NotImplementedError, "TODO: figure out what to do with this row and do it!"
+        # raise NotImplementedError, "TODO: figure out what to do with this row and do it!"
         # TODO: end
       end
     end
